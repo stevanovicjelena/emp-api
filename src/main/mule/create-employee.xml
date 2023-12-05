@@ -31,7 +31,7 @@ output application/json
 {
 	status: 200,
 	message: "Success",
-	description: "Mule response"
+	description: "Mule response payload"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
