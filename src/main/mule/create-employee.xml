@@ -7,11 +7,12 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e9e6cdd2-93e6-40e3-a475-78b21090adfa" basePath="emp-sapi" >
-		<http:listener-connection host="0.0.0.0" port="8091" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="1bd10868-e9f0-4ddb-b19b-add5f89d4edc" >
 		<db:my-sql-connection host="localhost" port="3306" user="root" password="jelena#Mulesoft123" database="emp" />
 	</db:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="48a90860-39eb-4f7d-be27-20b704f4dade" file="config.yaml" />
 	<flow name="create-employeeFlow" doc:id="ff9ed6d8-fff9-479e-ae9f-b3f0d0e0af34" >
 		<http:listener doc:name="Create Employee Listener" doc:id="d6262e25-8259-411a-88af-0dc0e7410192" config-ref="HTTP_Listener_config" path="create-employee"/>
 		<logger level="INFO" doc:name="Start Log" doc:id="359a30f0-b2f8-440e-abf1-1c9d30ca222d" message="The create employee flow started"/>
@@ -31,7 +32,7 @@ output application/json
 {
 	status: 200,
 	message: "Success",
-	description: "Mule response payload"
+	description: "Mule response payload."
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
